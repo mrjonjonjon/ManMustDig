@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://caskl1gqnnam0"]
+
+[ext_resource type="Script" path="res://chunk_parent.gd" id="2_rar4j"]
+[ext_resource type="Script" path="res://simplecontroller.gd" id="2_v13s0"]
+[ext_resource type="PackedScene" uid="uid://cgikviwtuprw5" path="res://ground_chunk.tscn" id="3_my8o4"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Drill" type="Area2D" parent="."]
+position = Vector2(944, 277)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("2_v13s0")
+
+[node name="Collider" type="CollisionPolygon2D" parent="Drill"]
+polygon = PackedVector2Array(-34.6666, -9.33334, -33.3333, 14.6667, -8, 22.6667, 10.6667, 16, 5.33337, -18.6667, -25.3333, -16)
+
+[node name="Polygon" type="Polygon2D" parent="Drill"]
+position = Vector2(-10.6667, 0)
+polygon = PackedVector2Array(-16, -14.6667, -24, -8, -22.6666, 12, 1.33331, 22.6667, 21.3334, 16, 16, -17.3333)
+
+[node name="ChunkParent" type="Node2D" parent="."]
+script = ExtResource("2_rar4j")
+chunk_length = 300
+num_chunks = 0
+chunk_prefab = ExtResource("3_my8o4")
+
+[node name="GroundChunk" parent="ChunkParent" instance=ExtResource("3_my8o4")]
+position = Vector2(563, 289)
+
+[editable path="ChunkParent/GroundChunk"]
